@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI Memory Card Index",
+  "type": "object",
+  "required": ["version", "cards"],
+  "properties": {
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string" },
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "type", "summary", "source", "date", "status", "confidence", "anchor"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "type": { "type": "string" },
+          "summary": { "type": "string" },
+          "keywords": { "type": "array", "items": { "type": "string" } },
+          "source": { "type": "string" },
+          "date": { "type": "string" },
+          "anchor": { "type": "string" },
+          "status": { "enum": ["active", "stale", "sealed", "quarantined"] },
+          "confidence": { "enum": ["confirmed", "observed", "inferred", "unconfirmed"] },
+          "precision": { "type": "number", "minimum": 0, "maximum": 1 },
+          "version": { "type": "integer" },
+          "provenance": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
